@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/sigra", "destination": "/sigra.html" },
+    { "source": "/sigra/", "destination": "/sigra.html" },
+    { "source": "/sigra-menu", "destination": "/sigra-menu.html" },
+    { "source": "/sigra-menu/", "destination": "/sigra-menu.html" },
+    { "source": "/sigra/menu", "destination": "/sigra-menu.html" },
+    { "source": "/sigra/menu/", "destination": "/sigra-menu.html" },
+    { "source": "/bhojuveer", "destination": "/bhojuveer.html" },
+    { "source": "/bhojuveer/", "destination": "/bhojuveer.html" },
+    { "source": "/bhojuveer-menu", "destination": "/bhojuveer-menu.html" },
+    { "source": "/bhojuveer-menu/", "destination": "/bhojuveer-menu.html" },
+    { "source": "/bhojuveer/menu", "destination": "/bhojuveer-menu.html" },
+    { "source": "/bhojuveer/menu/", "destination": "/bhojuveer-menu.html" }
+  ]
+}
