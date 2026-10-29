@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .door-shadow { fill: #1b3b22; }
+      @media (prefers-color-scheme: dark) {
+        .door-shadow { fill: #2b5536; stroke: rgba(255, 255, 255, 0.2); stroke-width: 1.2px; }
+      }
+    </style>
+  </defs>
+  <!-- Signature Shadow (matching navbar logo box-shadow) -->
+  <rect class="door-shadow" x="21" y="11" width="26" height="46" rx="5" ry="5" />
+  <!-- Signature Yellow Door -->
+  <rect x="17" y="7" width="26" height="46" rx="5" ry="5" fill="#F5B800" />
+</svg>

@@ -1,0 +1,940 @@
+/* ==========================================================================
+   Behind Yellow Doors Diner - Core Stylesheet
+   Modern, High-Fidelity 3D Door Experience
+   ========================================================================== */
+
+:root {
+  --door-yellow: #f5b300;
+  --door-yellow-light: #ffd24d;
+  --door-yellow-dark: #d89600;
+  --door-yellow-deep: #b37700;
+  --door-edge-color: #be7f00;
+
+  --brass-light: #ffe599;
+  --brass-mid: #d4af37;
+  --brass-dark: #8c6d1f;
+  --brass-shadow: rgba(60, 40, 10, 0.4);
+
+  --text-primary: #121316;
+  --text-muted: #5e6472;
+  --text-accent: #b37700;
+
+  --white-bg: #ffffff;
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: #0d0e12;
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* ==========================================================================
+   Main Viewport
+   ========================================================================== */
+.viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* ==========================================================================
+   Revealed White Screen Content - CHOOSE YOUR DOOR
+   Spacious, Elegant, Single-Viewport Fit
+   ========================================================================== */
+.white-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse 110% 90% at 50% 35%, #ffffff 0%, #fbfbfc 50%, #f1f2f6 100%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: clamp(1.5rem, 3.5vh, 2.5rem) clamp(1.2rem, 3vw, 2.5rem);
+}
+
+/* Dynamic cast shadow onto the white room */
+.door-cast-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.08) 45%, rgba(0, 0, 0, 0) 100%);
+  transform-origin: left center;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  z-index: 2;
+  filter: blur(14px);
+}
+
+.white-screen-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1140px;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition: opacity 0.5s ease-out, transform 0.5s var(--ease-smooth);
+  padding: 0.5rem 0.5rem;
+}
+
+body.door-peek .white-screen-content {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.destinations-header {
+  margin-bottom: clamp(1.4rem, 3vh, 2.4rem);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge-line {
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: #d4af37;
+}
+
+.badge-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  color: var(--text-accent);
+}
+
+.destinations-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1.12;
+  color: #111216;
+  margin-bottom: 0.5rem;
+}
+
+.destinations-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(0.92rem, 1.25vw, 1.12rem);
+  color: #555b68;
+  max-width: 660px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Destinations Two-Column Grid (Generously Spaced)
+   ========================================================================== */
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.8rem, 3vw, 2.8rem);
+  text-align: left;
+  margin-bottom: clamp(1rem, 2.2vh, 1.8rem);
+}
+
+.destination-card {
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth), border-color 0.4s ease;
+  position: relative;
+}
+
+.destination-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.11);
+  border-color: rgba(244, 180, 26, 0.4);
+}
+
+.card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(155px, 20vh, 200px);
+  overflow: hidden;
+  background: #e9ecf1;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s var(--ease-smooth);
+}
+
+.destination-card:hover .card-img {
+  transform: scale(1.06);
+}
+
+.card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%);
+  pointer-events: none;
+}
+
+.card-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  padding: 0.4rem 0.88rem;
+  border-radius: 24px;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.destination-tag-a {
+  background: rgba(245, 179, 0, 0.94);
+  color: #261b00;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+.destination-tag-b {
+  background: rgba(255, 255, 255, 0.94);
+  color: #121316;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+.card-body {
+  padding: clamp(1.5rem, 2.6vh, 2.1rem) clamp(1.5rem, 2.2vw, 2.1rem);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.location-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-accent);
+  margin-bottom: 0.65rem;
+}
+
+.location-chip .pin-icon {
+  width: 15px;
+  height: 15px;
+  stroke: var(--text-accent);
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.28rem, 1.8vw, 1.62rem);
+  font-weight: 700;
+  color: #121316;
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+}
+
+.card-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(0.88rem, 1.15vw, 1rem);
+  line-height: 1.6;
+  color: #494f5c;
+  border-left: 3px solid var(--door-yellow);
+  padding-left: 1.1rem;
+  margin: 0.2rem 0 clamp(1.2rem, 2.2vh, 1.8rem);
+}
+
+.destination-bhojuveer .card-quote {
+  border-left-color: #4e835a;
+}
+
+/* Big Destination Action Buttons */
+.btn-destination {
+  padding: clamp(0.85rem, 1.4vh, 1rem) 2rem;
+  border-radius: 40px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  transition: all 0.28s var(--ease-smooth);
+  margin-top: auto;
+}
+
+.btn-arrow-icon {
+  width: 17px;
+  height: 17px;
+  transition: transform 0.25s var(--ease-smooth);
+}
+
+.btn-destination:hover .btn-arrow-icon {
+  transform: translateX(4px);
+}
+
+.btn-sigra {
+  background: #111215;
+  color: #ffffff;
+  border: 1px solid #111215;
+  box-shadow: 0 6px 20px rgba(17, 18, 21, 0.16);
+}
+
+.btn-sigra:hover {
+  background: var(--door-yellow);
+  color: #111215;
+  border-color: var(--door-yellow);
+  box-shadow: 0 10px 25px rgba(245, 179, 0, 0.38);
+  transform: translateY(-2px);
+}
+
+.btn-bhojuveer {
+  background: #1a241e;
+  color: #ffffff;
+  border: 1px solid #1a241e;
+  box-shadow: 0 6px 20px rgba(26, 36, 30, 0.16);
+}
+
+.btn-bhojuveer:hover {
+  background: #2d5a37;
+  color: #ffffff;
+  border-color: #2d5a37;
+  box-shadow: 0 10px 25px rgba(45, 90, 55, 0.32);
+  transform: translateY(-2px);
+}
+
+.scroll-back-hint {
+  margin-top: clamp(0.6rem, 1.6vh, 1.4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: #8c92a0;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.scroll-back-hint:hover {
+  color: var(--door-yellow-dark);
+  transform: translateY(-2px);
+}
+
+.scroll-arrow-up {
+  width: 13px;
+  height: 13px;
+  border-left: 2px solid #8c92a0;
+  border-top: 2px solid #8c92a0;
+  transform: rotate(45deg);
+  animation: bounceUp 1.8s infinite;
+}
+
+@keyframes bounceUp {
+  0%, 100% { transform: translateY(0) rotate(45deg); }
+  50% { transform: translateY(-4px) rotate(45deg); }
+}
+
+/* ==========================================================================
+   3D Door Frame & Perspective Stage
+   ========================================================================== */
+.door-frame-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  perspective: 1700px;
+  perspective-origin: 15% 50%;
+  z-index: 10;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.yellow-door {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0% 50% 0px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.yellow-door:active {
+  cursor: grabbing;
+}
+
+/* Door Front Face */
+.door-face.door-front {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f7c93e 0%, #f4b41a 30%, #e6a411 70%, #d89607 100%);
+  backface-visibility: hidden;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.5rem, 4vh, 3.5rem) clamp(2rem, 5vw, 4.5rem);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Fine Wood Grain & Textures */
+.door-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.05) 0px,
+    rgba(255, 255, 255, 0.04) 2px,
+    rgba(0, 0, 0, 0.03) 4px,
+    transparent 7px
+  ), repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    rgba(0, 0, 0, 0.02) 20px,
+    transparent 40px
+  );
+  mix-blend-mode: overlay;
+}
+
+.door-ambient-lighting {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 85% 75% at 45% 45%,
+    rgba(255, 245, 190, 0.35) 0%,
+    rgba(240, 175, 20, 0.15) 55%,
+    rgba(140, 85, 0, 0.5) 100%
+  );
+  box-shadow: inset 0 0 45px rgba(160, 95, 0, 0.4);
+}
+
+/* ==========================================================================
+   Architectural Door Panels
+   ========================================================================== */
+.door-panels-grid {
+  position: absolute;
+  top: 5%;
+  bottom: 12%;
+  left: 6%;
+  right: 18%;
+  display: flex;
+  gap: clamp(1.2rem, 2.5vw, 2.8rem);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.panel-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vh, 2.2rem);
+}
+
+.door-panel {
+  flex: 1;
+  background: linear-gradient(145deg, #e39d0d 0%, #f6bd24 45%, #efaf14 100%);
+  border-radius: 8px;
+  position: relative;
+  box-shadow:
+    inset 4px 4px 10px rgba(90, 50, 0, 0.55),
+    inset -3px -3px 7px rgba(255, 245, 180, 0.65),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+}
+
+.door-panel.panel-tall {
+  flex: 1.6;
+}
+
+.panel-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #f7c32d 0%, #eaab12 100%);
+  box-shadow:
+    inset -2px -2px 6px rgba(110, 65, 0, 0.4),
+    inset 2px 2px 6px rgba(255, 255, 220, 0.6),
+    0 2px 4px rgba(70, 40, 0, 0.2);
+}
+
+/* ==========================================================================
+   Vintage Brass Plaque
+   ========================================================================== */
+.brass-plaque {
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: linear-gradient(135deg, #ffe9a6 0%, #d4af37 40%, #b8860b 80%, #7d5904 100%);
+  border: 1px solid #fff0a8;
+  border-radius: 6px;
+  padding: 0.9rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 3px rgba(80, 55, 10, 0.5);
+  pointer-events: none;
+}
+
+.plaque-icon {
+  width: 22px;
+  height: 22px;
+  color: #432a02;
+  margin-bottom: 0.25rem;
+}
+
+.plaque-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.72rem, 1.2vw, 0.95rem);
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  color: #3b2400;
+  text-shadow: 0 1px 0 rgba(255, 240, 180, 0.8);
+}
+
+.plaque-desc {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.35em;
+  color: #5a3c05;
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+
+.plaque-rivet {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #3e2601;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.plaque-rivet.top-left { top: 5px; left: 5px; }
+.plaque-rivet.top-right { top: 5px; right: 5px; }
+.plaque-rivet.bottom-left { bottom: 5px; left: 5px; }
+.plaque-rivet.bottom-right { bottom: 5px; right: 5px; }
+
+/* Peephole */
+.peephole {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd978 0%, #b8860b 100%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 1px #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.peephole-lens {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2a3545 0%, #0d1117 75%);
+  border: 1px solid #4f3b0f;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   Brass Door Handle Assembly
+   ========================================================================== */
+.handle-assembly {
+  position: absolute;
+  top: 50%;
+  right: clamp(1.8rem, 5vw, 4.5rem);
+  transform: translateY(-50%);
+  z-index: 20;
+  cursor: grab;
+}
+
+.handle-assembly:active {
+  cursor: grabbing;
+}
+
+.escutcheon-plate {
+  position: relative;
+  width: clamp(48px, 5vw, 62px);
+  height: clamp(190px, 25vh, 240px);
+  background: linear-gradient(135deg, #ffe9a6 0%, #d4af37 40%, #a27409 85%, #6e4e04 100%);
+  border-radius: 14px;
+  box-shadow:
+    6px 8px 18px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.9),
+    inset -2px -2px 4px rgba(80, 50, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border: 1px solid rgba(255, 240, 160, 0.5);
+}
+
+.screw {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5a3c05;
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+  position: relative;
+}
+
+.screw::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 80%;
+  height: 1.5px;
+  background: #2b1d03;
+  transform: translateY(-50%) rotate(35deg);
+}
+
+.handle-mount {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff2b8 0%, #c4961d 60%, #5d4002 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.handle-lever {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform-origin: 90% 50%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.15s ease-out;
+}
+
+.handle-assembly.depressed .handle-lever {
+  transform: translateY(-50%) rotate(18deg);
+}
+
+.handle-grip {
+  width: clamp(100px, 12vw, 135px);
+  height: 22px;
+  border-radius: 12px 6px 6px 12px;
+  background: linear-gradient(180deg, #fff2ba 0%, #dbaf31 35%, #9b720d 75%, #5a4103 100%);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.45),
+    inset 0 2px 2px rgba(255, 255, 255, 0.8),
+    inset 0 -2px 3px rgba(60, 40, 2, 0.6);
+  position: relative;
+  right: clamp(75px, 9vw, 100px);
+}
+
+.keyhole-container {
+  position: absolute;
+  bottom: 22%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.keyhole-round {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1c1303;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.keyhole-stem {
+  width: 6px;
+  height: 12px;
+  background: #1c1303;
+  margin-top: -3px;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+}
+
+/* Kickplate */
+.kickplate {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(38px, 6vh, 60px);
+  background: linear-gradient(180deg, #ffe599 0%, #cca329 35%, #99740e 80%, #684d03 100%);
+  box-shadow:
+    0 -3px 8px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 15%;
+  pointer-events: none;
+}
+
+.kickplate-screw {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #473003;
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================================
+   3D Door Edges (Thickness volume)
+   ========================================================================== */
+.door-edge {
+  position: absolute;
+  background: linear-gradient(90deg, #a46e00 0%, #ce8c03 50%, #e29e0b 100%);
+  pointer-events: none;
+}
+
+.right-edge {
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 100%;
+  transform-origin: right center;
+  transform: rotateY(90deg);
+  background: linear-gradient(to right, #915f00, #c48704, #f2b017);
+  box-shadow: inset 2px 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.top-edge {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  transform-origin: top center;
+  transform: rotateX(-90deg);
+  background: #f7ca45;
+}
+
+.bottom-edge {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  transform-origin: bottom center;
+  transform: rotateX(90deg);
+  background: #8b5b00;
+}
+
+/* ==========================================================================
+   Scroll Hint (Prompt to Scroll)
+   ========================================================================== */
+.scroll-hint {
+  position: fixed;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  z-index: 40;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.mouse-icon {
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.mouse-wheel {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 3px;
+  height: 7px;
+  background: #ffffff;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: mouseWheelMove 1.6s infinite ease-in-out;
+}
+
+@keyframes mouseWheelMove {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  60% { transform: translate(-50%, 12px); opacity: 0; }
+  100% { transform: translate(-50%, 0); opacity: 0; }
+}
+
+.scroll-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.scroll-arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.scroll-arrows span {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  transform: rotate(45deg);
+  animation: arrowDown 1.6s infinite;
+  opacity: 0.8;
+}
+
+.scroll-arrows span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.scroll-arrows span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes arrowDown {
+  0% { opacity: 0; transform: translateY(-4px) rotate(45deg); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(4px) rotate(45deg); }
+}
+
+/* ==========================================================================
+   Progress Bar
+   ========================================================================== */
+.progress-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  z-index: 50;
+  pointer-events: none;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--door-yellow), #e39d0d);
+  transition: width 0.08s linear;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .destinations-grid {
+    gap: 1.5rem;
+  }
+  .card-body {
+    padding: 1.6rem 1.6rem 1.8rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .destinations-grid {
+    grid-template-columns: 1fr;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .destinations-title {
+    font-size: 2.2rem;
+  }
+
+  .card-image-wrap {
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .white-screen {
+    padding: 2.5rem 1rem 2rem;
+    align-items: flex-start;
+  }
+
+  .white-screen-content {
+    margin-top: 0.5rem;
+    padding: 1rem 0.2rem;
+  }
+
+  .door-panels-grid {
+    left: 8%;
+    right: 28%;
+    gap: 0.8rem;
+  }
+
+  .handle-assembly {
+    right: 1.2rem;
+  }
+
+  .handle-grip {
+    width: 85px;
+    right: 65px;
+  }
+}

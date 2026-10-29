@@ -1,0 +1,721 @@
+/* ==========================================================================
+   Behind Yellow Doors Diner — Bhojuveer Food & Beverages Menu Stylesheet
+   Botanical Glasshouse Theme: Forest Green (#1b3b22), Gold (#c5a059), Cream (#fcfbf7)
+   ========================================================================== */
+
+:root {
+  --bj-dark: #142817;
+  --bj-green: #1b3b22;
+  --bj-green-hover: #264f2e;
+  --bj-green-subtle: #edf4ee;
+  --bj-gold: #c5a059;
+  --bj-gold-light: #f7ecd7;
+  --bj-cream-bg: #fcfbf7;
+  --bj-card-bg: #ffffff;
+  --bj-text-main: #1f2937;
+  --bj-text-muted: #5d6d62;
+  --bj-border: rgba(27, 59, 34, 0.12);
+  --bj-border-light: rgba(27, 59, 34, 0.06);
+  --bj-shadow: 0 4px 20px rgba(27, 59, 34, 0.06);
+  --bj-shadow-hover: 0 10px 28px rgba(27, 59, 34, 0.12);
+}
+
+body.bhojuveer-menu-page {
+  background-color: var(--bj-cream-bg);
+  color: var(--bj-text-main);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------------- Top Announcement ---------------- */
+.bhojuveer-menu-page .top-announcement {
+  background: var(--bj-dark);
+  color: #d1e7d6;
+  text-align: center;
+  padding: 0.55rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* ---------------- Header Styling ---------------- */
+.bhojuveer-menu-page .outlet-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(252, 251, 247, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bj-border);
+  padding: 1.15rem 0;
+}
+
+.bhojuveer-menu-page .nav-container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.bhojuveer-menu-page .brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.bhojuveer-menu-page .leaf-door-pip {
+  width: 17px;
+  height: 29px;
+  background: #23492d;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(35, 73, 45, 0.25);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.bhojuveer-menu-page .brand-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #111;
+  display: block;
+  line-height: 1.2;
+}
+
+.bhojuveer-menu-page .brand-outlet {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--bj-green);
+  display: block;
+}
+
+.bhojuveer-menu-page .desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.bhojuveer-menu-page .nav-link {
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #374151;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.bhojuveer-menu-page .nav-link:hover,
+.bhojuveer-menu-page .nav-link.active {
+  color: var(--bj-green);
+  font-weight: 600;
+}
+
+.bhojuveer-menu-page .nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Outlet Switcher Pill */
+.bhojuveer-menu-page .outlet-selector-wrapper {
+  position: relative;
+}
+
+.bhojuveer-menu-page .outlet-btn-current {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.48rem 0.95rem;
+  background: #f1f7f2;
+  border: 1px solid rgba(27, 59, 34, 0.18);
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--bj-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bhojuveer-menu-page .outlet-btn-current:hover {
+  background: #e4efe6;
+  border-color: var(--bj-green);
+}
+
+.bhojuveer-menu-page .location-dot.bhojuveer-dot {
+  width: 9px;
+  height: 9px;
+  background: #2e7d32;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+.bhojuveer-menu-page .chevron-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;
+}
+
+.bhojuveer-menu-page .outlet-selector-wrapper.open .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.bhojuveer-menu-page .outlet-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #ffffff;
+  border: 1px solid var(--bj-border);
+  border-radius: 14px;
+  padding: 0.5rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  display: none;
+  min-width: 240px;
+  z-index: 100;
+}
+
+.bhojuveer-menu-page .outlet-selector-wrapper.open .outlet-popover {
+  display: block;
+}
+
+.bhojuveer-menu-page .popover-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 10px;
+  transition: background 0.18s ease;
+}
+
+.bhojuveer-menu-page .popover-item:hover {
+  background: #fdf8e8;
+}
+
+.bhojuveer-menu-page .status-indicator.sigra-indicator {
+  width: 9px;
+  height: 9px;
+  background: #eab308;
+  border-radius: 50%;
+}
+
+.bhojuveer-menu-page .popover-text strong {
+  display: block;
+  font-size: 0.88rem;
+  color: #111;
+}
+
+.bhojuveer-menu-page .popover-text small {
+  display: block;
+  font-size: 0.72rem;
+  color: #6b7280;
+}
+
+.bhojuveer-menu-page .btn-nav-zomato {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border: 1px solid #ef4444;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #dc2626;
+  transition: all 0.2s ease;
+}
+
+.bhojuveer-menu-page .btn-nav-zomato:hover {
+  background: #fef2f2;
+}
+
+.bhojuveer-menu-page .zomato-badge {
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+}
+
+.bhojuveer-menu-page .btn-nav-reserve {
+  padding: 0.52rem 1.2rem;
+  background: var(--bj-green);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.bhojuveer-menu-page .btn-nav-reserve:hover {
+  background: var(--bj-green-hover);
+  box-shadow: 0 4px 12px rgba(27, 59, 34, 0.25);
+}
+
+/* ---------------- Hero Section ---------------- */
+.bhojuveer-menu-page .menu-hero {
+  padding: 3.5rem 1.5rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, #f5f8f5 0%, var(--bj-cream-bg) 100%);
+  border-bottom: 1px solid var(--bj-border-light);
+}
+
+.bhojuveer-menu-page .menu-hero-container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.bhojuveer-menu-page .menu-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.bhojuveer-menu-page .menu-hero-badge .badge-line {
+  width: 28px;
+  height: 1px;
+  background: var(--bj-gold);
+}
+
+.bhojuveer-menu-page .menu-hero-badge .badge-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--bj-green);
+  text-transform: uppercase;
+}
+
+.bhojuveer-menu-page .menu-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: var(--bj-dark);
+  margin: 0.2rem 0 0.8rem;
+  letter-spacing: -0.01em;
+}
+
+.bhojuveer-menu-page .menu-hero-subtitle {
+  font-size: 0.95rem;
+  color: var(--bj-text-muted);
+  line-height: 1.6;
+  margin: 0 auto 1.5rem;
+}
+
+.bhojuveer-menu-page .story-callout-card {
+  background: #ffffff;
+  border: 1px solid rgba(27, 59, 34, 0.15);
+  border-radius: 18px;
+  padding: 1.75rem 2rem;
+  margin: 1.5rem auto 0;
+  box-shadow: 0 4px 20px rgba(27, 59, 34, 0.05);
+  text-align: center;
+  max-width: 680px;
+}
+
+.bhojuveer-menu-page .story-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--bj-green);
+  margin: 0 0 0.5rem;
+}
+
+.bhojuveer-menu-page .story-desc {
+  font-size: 0.88rem;
+  color: var(--bj-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ---------------- Sticky Subnav & Search ---------------- */
+.bhojuveer-menu-page .sticky-menu-subnav {
+  position: sticky;
+  top: 73px;
+  z-index: 990;
+  background: rgba(252, 251, 247, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--bj-border);
+  padding: 0.85rem 0;
+}
+
+.bhojuveer-menu-page .subnav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.bhojuveer-menu-page .main-cat-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.bhojuveer-menu-page .cat-btn {
+  padding: 0.55rem 1.15rem;
+  background: #ffffff;
+  border: 1px solid var(--bj-border);
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bhojuveer-menu-page .cat-btn:hover {
+  border-color: var(--bj-green);
+  color: var(--bj-green);
+}
+
+.bhojuveer-menu-page .cat-btn.active {
+  background: var(--bj-green);
+  color: #ffffff;
+  border-color: var(--bj-green);
+  box-shadow: 0 2px 10px rgba(27, 59, 34, 0.2);
+}
+
+.bhojuveer-menu-page .menu-search-box {
+  position: relative;
+  flex: 1;
+  max-width: 440px;
+  min-width: 240px;
+}
+
+.bhojuveer-menu-page .menu-search-box .search-icon {
+  position: absolute;
+  left: 0.95rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.bhojuveer-menu-page .menu-search-box input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem 2.2rem 0.55rem 2.4rem;
+  background: #ffffff;
+  border: 1px solid var(--bj-border);
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.86rem;
+  color: #111;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bhojuveer-menu-page .menu-search-box input:focus {
+  border-color: var(--bj-green);
+  box-shadow: 0 0 0 3px rgba(27, 59, 34, 0.1);
+}
+
+.bhojuveer-menu-page .clear-search {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.15rem;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.bhojuveer-menu-page .clear-search.hidden {
+  display: none;
+}
+
+/* ---------------- Main Content ---------------- */
+.bhojuveer-menu-page .menu-main-content {
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+.bhojuveer-menu-page .menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bhojuveer-menu-page .super-section-banner {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid rgba(27, 59, 34, 0.08);
+}
+
+.bhojuveer-menu-page .super-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--bj-green);
+  background: var(--bj-green-subtle);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+.bhojuveer-menu-page .super-section-banner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--bj-dark);
+  margin: 0.2rem 0 0.5rem;
+}
+
+.bhojuveer-menu-page .super-section-banner p {
+  color: var(--bj-text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Menu Category Card */
+.bhojuveer-menu-page .menu-category {
+  background: var(--bj-card-bg);
+  border: 1px solid var(--bj-border);
+  border-radius: 20px;
+  padding: 2rem 2.2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--bj-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bhojuveer-menu-page .menu-category:hover {
+  box-shadow: var(--bj-shadow-hover);
+}
+
+.bhojuveer-menu-page .cat-header {
+  border-bottom: 1px solid var(--bj-border-light);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.bhojuveer-menu-page .cat-header h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--bj-dark);
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.bhojuveer-menu-page .cat-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--bj-text-muted);
+  letter-spacing: 0.04em;
+  margin-left: 0.6rem;
+}
+
+.bhojuveer-menu-page .addon-note {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--bj-green);
+  background: #edf5ee;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  margin-top: 0.45rem;
+}
+
+/* Items Grid */
+.bhojuveer-menu-page .items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 0.9rem 1.75rem;
+}
+
+.bhojuveer-menu-page .menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px dashed rgba(27, 59, 34, 0.08);
+  transition: background 0.15s ease;
+}
+
+.bhojuveer-menu-page .menu-row:hover {
+  background: #f7faf7;
+  border-radius: 8px;
+}
+
+.bhojuveer-menu-page .item-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.bhojuveer-menu-page .item-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.35;
+}
+
+.bhojuveer-menu-page .item-cost {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bj-green);
+  white-space: nowrap;
+}
+
+/* Food Icons */
+.bhojuveer-menu-page .food-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bhojuveer-menu-page .food-icon.veg {
+  border: 1.5px solid #16a34a;
+}
+.bhojuveer-menu-page .food-icon.veg::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #16a34a;
+  border-radius: 50%;
+}
+
+.bhojuveer-menu-page .food-icon.nonveg {
+  border: 1.5px solid #dc2626;
+}
+.bhojuveer-menu-page .food-icon.nonveg::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #dc2626;
+  border-radius: 50%;
+}
+
+.bhojuveer-menu-page .food-icon.veg-nonveg {
+  border: 1.5px solid #2563eb;
+}
+.bhojuveer-menu-page .food-icon.veg-nonveg::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #2563eb;
+  border-radius: 50%;
+}
+
+.bhojuveer-menu-page .food-icon.beverage {
+  border: 1.5px solid #d97706;
+}
+.bhojuveer-menu-page .food-icon.beverage::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #d97706;
+  border-radius: 50%;
+}
+
+/* ---------------- Footer ---------------- */
+.bhojuveer-menu-page .menu-footer {
+  background: var(--bj-dark);
+  color: #ffffff;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid var(--bj-border);
+}
+
+.bhojuveer-menu-page .footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.bhojuveer-menu-page .footer-info strong {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.bhojuveer-menu-page .footer-info span {
+  display: block;
+  font-size: 0.85rem;
+  color: #9cb3a2;
+  line-height: 1.4;
+}
+
+.bhojuveer-menu-page .footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bhojuveer-menu-page .btn-footer-back {
+  padding: 0.65rem 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.bhojuveer-menu-page .btn-footer-back:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.bhojuveer-menu-page .btn-footer-zomato {
+  padding: 0.65rem 1.25rem;
+  background: #dc2626;
+  border: none;
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.bhojuveer-menu-page .btn-footer-zomato:hover {
+  background: #b91c1c;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 900px) {
+  .bhojuveer-menu-page .items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bhojuveer-menu-page .desktop-nav {
+    display: none;
+  }
+}

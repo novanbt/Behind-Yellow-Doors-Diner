@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Behind Yellow Doors Diner — Choose Your Door</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#f5b800">
+</head>
+<body>
+  <!-- Main Viewport / 3D Stage -->
+  <main id="viewport" class="viewport">
+    
+    <!-- White Screen Revealed Behind the Door -->
+    <section id="whiteScreen" class="white-screen" aria-label="Revealed Destinations">
+      <!-- Dynamic shadow cast onto white room by the door -->
+      <div id="doorShadow" class="door-cast-shadow"></div>
+
+      <!-- Destination Choice Content -->
+      <div class="white-screen-content">
+        
+        <!-- Header / Invitation -->
+        <div class="destinations-header">
+          <div class="hero-badge">
+            <span class="badge-line"></span>
+            <span class="badge-text">VARANASI, INDIA</span>
+            <span class="badge-line"></span>
+          </div>
+
+          <h1 class="destinations-title">CHOOSE YOUR DOOR</h1>
+          <p class="destinations-subtitle">
+            “Two different spaces. Two different moods. The same love for good food.”
+          </p>
+        </div>
+
+        <!-- The Two Destination Panels -->
+        <div class="destinations-grid">
+
+          <!-- DESTINATION A — SIGRA -->
+          <article class="destination-card destination-sigra">
+            <div class="card-image-wrap">
+              <img 
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" 
+                alt="Behind Yellow Doors Diner Sigra - Social dining atmosphere" 
+                class="card-img"
+                loading="eager"
+              />
+              <div class="card-badge destination-tag-a">DESTINATION A</div>
+              <div class="card-image-overlay"></div>
+            </div>
+
+            <div class="card-body">
+              <div class="location-chip">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Sigra, Varanasi, Uttar Pradesh</span>
+              </div>
+
+              <h2 class="card-title">Behind Yellow Doors Diner — Sigra</h2>
+
+              <blockquote class="card-quote">
+                “Good food, great company, and a little friendly competition. Come for your favourites, stay for the conversations.”
+              </blockquote>
+
+              <a href="/sigra" class="btn btn-destination btn-sigra">
+                <span>ENTER SIGRA</span>
+                <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- DESTINATION B — BHOJUVEER -->
+          <article class="destination-card destination-bhojuveer">
+            <div class="card-image-wrap">
+              <img 
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" 
+                alt="Behind Yellow Doors Diner Bhojuveer - Garden-inspired aesthetic cafe" 
+                class="card-img"
+                loading="eager"
+              />
+              <div class="card-badge destination-tag-b">DESTINATION B</div>
+              <div class="card-image-overlay"></div>
+            </div>
+
+            <div class="card-body">
+              <div class="location-chip">
+                <svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Artistik Abode, SH 2/215-2, Sikraul, Bhojuveer, Varanasi</span>
+              </div>
+
+              <h2 class="card-title">Behind Yellow Doors Diner — Bhojuveer</h2>
+
+              <blockquote class="card-quote">
+                “A thoughtfully designed space for beautiful meals, relaxed conversations, and memorable moments.”
+              </blockquote>
+
+              <a href="/bhojuveer" class="btn btn-destination btn-bhojuveer">
+                <span>ENTER BHOJUVEER</span>
+                <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Scroll back to close hint -->
+        <div id="closeDoorHint" class="scroll-back-hint" role="button" tabindex="0" title="Click or scroll up to close">
+          <div class="scroll-arrow-up"></div>
+          <span>Scroll up to close door</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Perspective Stage for the Yellow Door -->
+    <div class="door-frame-wrapper">
+      <div id="door" class="yellow-door" role="region" aria-label="Yellow Door">
+        <!-- Front Surface of Door -->
+        <div class="door-face door-front">
+          <div class="door-grain"></div>
+          <div class="door-ambient-lighting"></div>
+
+          <!-- Upper Door Section: Molded Panels -->
+          <div class="door-panels-grid">
+            <div class="panel-column">
+              <div class="door-panel"><div class="panel-inner"></div></div>
+              <div class="door-panel"><div class="panel-inner"></div></div>
+              <div class="door-panel panel-tall"><div class="panel-inner"></div></div>
+            </div>
+            
+            <div class="panel-column">
+              <div class="door-panel"><div class="panel-inner"></div></div>
+              <div class="door-panel"><div class="panel-inner"></div></div>
+              <div class="door-panel panel-tall"><div class="panel-inner"></div></div>
+            </div>
+          </div>
+
+          <!-- Centered Brass Sign / Nameplate -->
+          <div class="brass-plaque">
+            <div class="plaque-rivet top-left"></div>
+            <div class="plaque-rivet top-right"></div>
+            <div class="plaque-rivet bottom-left"></div>
+            <div class="plaque-rivet bottom-right"></div>
+            <div class="plaque-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <span class="plaque-title">BEHIND YELLOW DOORS</span>
+            <span class="plaque-desc">DINER</span>
+          </div>
+
+          <!-- Brass Peephole viewer -->
+          <div class="peephole">
+            <div class="peephole-lens"></div>
+          </div>
+
+          <!-- Door Handle Assembly on Right Side -->
+          <div id="doorHandle" class="handle-assembly">
+            <div class="escutcheon-plate">
+              <div class="screw top"></div>
+              
+              <div class="handle-mount">
+                <div class="handle-lever">
+                  <div class="handle-grip"></div>
+                </div>
+              </div>
+
+              <div class="keyhole-container">
+                <div class="keyhole-round"></div>
+                <div class="keyhole-stem"></div>
+              </div>
+
+              <div class="screw bottom"></div>
+            </div>
+          </div>
+
+          <!-- Lower Brass Kickplate -->
+          <div class="kickplate">
+            <div class="kickplate-screw"></div>
+            <div class="kickplate-screw"></div>
+            <div class="kickplate-screw"></div>
+            <div class="kickplate-screw"></div>
+          </div>
+        </div>
+
+        <!-- 3D Door Thickness Edges -->
+        <div class="door-edge right-edge"></div>
+        <div class="door-edge top-edge"></div>
+        <div class="door-edge bottom-edge"></div>
+      </div>
+    </div>
+
+    <!-- Scroll Cue Indicator (Fades out on scroll) -->
+    <div id="scrollHint" class="scroll-hint">
+      <div class="mouse-icon">
+        <div class="mouse-wheel"></div>
+      </div>
+      <div class="scroll-text">SCROLL TO OPEN</div>
+      <div class="scroll-arrows">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Minimal Progress Bar at Bottom -->
+    <div class="progress-container">
+      <div id="progressBar" class="progress-fill"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
